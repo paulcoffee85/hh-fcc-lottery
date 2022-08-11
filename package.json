@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test": "mocha --timeout 1000000"
+},
   "devDependencies": {
     "@chainlink/contracts": "^0.4.1",
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers",

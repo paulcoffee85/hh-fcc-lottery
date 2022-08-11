@@ -15,6 +15,7 @@ pragma solidity ^0.8.7;
 import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
+import "hardhat/console.sol";
 
 error Raffle__NotEnoughETHEntered();
 error Raffle__TransferFailed();
@@ -134,7 +135,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
                 s_players.length,
                 uint256(s_raffleState)
             );
-        }
+        }// performUpkeep() calls the Chainlink VRF :)
         s_raffleState = RaffleState.CALCULATING;
         uint256 requestId = i_vrfCoordinator.requestRandomWords(
             i_gasLane,

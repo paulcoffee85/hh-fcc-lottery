@@ -18,6 +18,10 @@ const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
+    mocha: {
+        timout: 100000000, //200 seconds max
+    },
+
     defaultNetwork: "hardhat",
     networks: {
         hardhat: {
@@ -26,16 +30,27 @@ module.exports = {
         },
         localhost: {
             chainId: 31337,
+            // },
+            // etherscan: {
+            //     apiKey: ETHERSCAN_API_KEY,
         },
 
         rinkeby: {
             chainId: 4,
-            blockConfirmations: 6,
+            blockConfirmations: 1,
             url: RINKEBY_RPC_URL,
             accounts: [PRIVATE_KEY],
             saveDeployments: true,
+            //     etherscan: {
+            //         apiKey: ETHERSCAN_API_KEY,
+            //     },
         },
     },
+
+    etherscan: {
+        apiKey: process.env.ETHERSCAN_API_KEY,
+    },
+
     solidity: {
         compilers: [
             {
@@ -45,9 +60,6 @@ module.exports = {
                 version: "0.4.24",
             },
         ],
-    },
-    mocha: {
-        timeout: 500000,
     },
 
     namedAccounts: {
@@ -59,9 +71,7 @@ module.exports = {
             default: 1,
         },
     },
-    mocha: {
-        timout: 200000, //200 seconds max
-    },
+
     gasReporter: {
         enabled: false,
         outputFile: "gas-report.txt",

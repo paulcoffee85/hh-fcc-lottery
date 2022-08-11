@@ -1,5 +1,8 @@
+artifacts
+cache
+
 node_modules
-.env
+.vscode
 coverage
 coverage.json
 typechain
@@ -7,3 +10,6 @@ deployments
 #Hardhat files
 cache
 artifacts
+ 
+# don't push the environment vars!
+.env
